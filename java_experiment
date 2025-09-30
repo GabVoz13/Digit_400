@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Java script experimentation</title>
+    <script type=""text/javascript">
+     window.onload="alert('hello!');"
+    </script>
+</head>
+    <body>
+      <p>Here is a sample paragraph! <span onclick="alert('from clicking the span!');" style="color:pink; text-decoration:underline; cursor:pointer">This is to show</span> the experiment.</p>
+    </body>
+</html>
