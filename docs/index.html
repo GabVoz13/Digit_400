@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Java script experimentation</title>
-    <script type=""text/javascript">
-     window.onload="alert('hello!');"
-    </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Hub</title>
+  <script src="interact.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    #box {
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      position: relative;
+      margin: 20px auto;
+    }
+
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+      font-size: 1rem;
+    }
+  </style>
 </head>
-    <body>
-      <p>Here is a sample paragraph! <span onclick="alert('from clicking the span!');" style="color:pink; text-decoration:underline; cursor:pointer">This is to show</span> the experiment.</p>
-    </body>
+<body>
+  <h1>My JavaScript Hub</h1>
+  <p>This is my base page for learning and testing JavaScript!</p>
+
+  <div id="box"></div>
+
+  <button id="moveBtn">Move Box</button>
+  <button id="resetBtn">Reset Box</button>
+
+  <footer>
+    <p>More features coming soon!</p>
+  </footer>
+</body>
 </html>
