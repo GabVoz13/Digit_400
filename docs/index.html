@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JavaScript Hub</title>
   <script src="interact.js" defer></script>
+  <script src="togglen.js" defer></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -25,6 +26,21 @@
       padding: 8px 12px;
       font-size: 1rem;
     }
+    
+    .toggle {
+        cursor: pointer;
+        color: black;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .toggle.on {
+        color: white;
+        background-color: hotpink;
+        padding: 4px 6px;
+        border-radius: 4px;
+    }
+
   </style>
 </head>
 <body>
@@ -36,6 +52,11 @@
   <button id="moveBtn">Move Box</button>
   <button id="resetBtn">Reset Box</button>
 
+  <p>toggle these on and off
+    <span class="toggle">JavaScript</span>,
+    <span class="toggle">CSS</span>,
+    and <span class="toggle">HTML</span>.
+  </p>
   <footer>
     <p>More features coming soon!</p>
   </footer>
