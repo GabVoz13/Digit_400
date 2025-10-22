@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Animation Practice</title>
+
+    <style>
+        /* ===== Simple Navbar ===== */
+        nav {
+            background-color: #222;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: hotpink;
+        }
+
+        nav a.active {
+            color: hotpink;
+        }
+
+        /* ===== Page and SVG Styling ===== */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0b0b0b;
+            color: #eee;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        svg {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #333;
+            background-color: #111;
+        }
+
+        .rectHover {
+            fill: deepskyblue;
+            transition: transform 0.3s ease, fill 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+<!-- ===== Navigation ===== -->
+<nav>
+    <a href="index.html">Home</a> |
+    <a href="svg-animations.html" class="active">SVG Practice</a>
+</nav>
+
+<h1>SVG Animation Practice</h1>
+
+<!-- === SVG-only Animation === -->
+<section>
+    <h2>1️⃣ SVG Animate Element</h2>
+    <svg width="200" height="200" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="30" fill="hotpink">
+            <animate attributeName="r" from="30" to="80" dur="2s" repeatCount="indefinite" />
+            <animate attributeName="fill" values="hotpink; purple; hotpink" dur="3s" repeatCount="indefinite" />
+        </circle>
+    </svg>
+</section>
+
+<!-- === JavaScript "Avoid the Mouse" Animation === -->
+<section>
+    <h2>2️⃣ Square Avoids the Mouse</h2>
+    <svg id="avoidBox" width="300" height="300" viewBox="0 0 300 300">
+        <rect id="square" x="125" y="125" width="50" height="50" fill="deepskyblue" rx="5" ry="5" />
+    </svg>
+    <p>Try to catch the square!</p>
+</section>
+
+<script>
+    const svg = document.getElementById("avoidBox");
+    const square = document.getElementById("square");
+
+    let svgRect = svg.getBoundingClientRect();
+    let x = 125;
+    let y = 125;
+    const step = 20; // how much the square moves
+
+    svg.addEventListener("mousemove", (e) => {
+        // get mouse position relative to SVG
+        const mouseX = e.clientX - svgRect.left;
+        const mouseY = e.clientY - svgRect.top;
+
+        const sqX = x + 25; // center of square
+        const sqY = y + 25;
+
+        const dx = mouseX - sqX;
+        const dy = mouseY - sqY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 80) {
+            // move away from mouse
+            const angle = Math.atan2(dy, dx);
+            x -= Math.cos(angle) * step;
+            y -= Math.sin(angle) * step;
+
+            // keep inside SVG bounds
+            x = Math.max(0, Math.min(x, 250));
+            y = Math.max(0, Math.min(y, 250));
+
+            square.setAttribute("x", x);
+            square.setAttribute("y", y);
+        }
+    });
+
+    // handle window resizing so coordinates stay accurate
+    window.addEventListener("resize", () => {
+        svgRect = svg.getBoundingClientRect();
+    });
+</script>
+</body>
+</html>

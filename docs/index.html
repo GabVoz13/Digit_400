@@ -7,6 +7,28 @@
   <script src="interact.js" defer></script>
   <script src="togglen.js" defer></script>
   <style>
+      nav {
+          background-color: #222;   /* dark background */
+          text-align: center;       /* center the links */
+          padding: 10px;            /* space around the text */
+      }
+
+      nav a {
+          color: white;             /* link color */
+          text-decoration: none;    /* remove underline */
+          margin: 0 10px;           /* spacing between links */
+          font-weight: bold;        /* make text bold */
+          transition: color 0.3s ease; /* smooth color change */
+      }
+
+      nav a:hover {
+          color: hotpink;           /* hover color */
+      }
+
+      nav a.active {
+          color: hotpink;           /* highlight current page */
+      }
+
     body {
       font-family: Arial, sans-serif;
       text-align: center;
@@ -26,7 +48,7 @@
       padding: 8px 12px;
       font-size: 1rem;
     }
-    
+
     .toggle {
         cursor: pointer;
         color: black;
@@ -44,6 +66,10 @@
   </style>
 </head>
 <body>
+<nav>
+    <a href="index.html">Home</a> |
+    <a href="svg_animations.html" class="active">SVG Practice</a>
+</nav>
   <h1>My JavaScript Hub</h1>
   <p>This is my base page for learning and testing JavaScript!</p>
 
