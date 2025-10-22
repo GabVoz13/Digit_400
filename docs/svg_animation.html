@@ -6,7 +6,6 @@
     <title>SVG Animation Practice</title>
 
     <style>
-        /* ===== Simple Navbar ===== */
         nav {
             background-color: #222;
             text-align: center;
@@ -29,7 +28,6 @@
             color: hotpink;
         }
 
-        /* ===== Page and SVG Styling ===== */
         body {
             font-family: Arial, sans-serif;
             background-color: #0b0b0b;
@@ -54,7 +52,7 @@
 </head>
 
 <body>
-<!-- ===== Navigation ===== -->
+
 <nav>
     <a href="index.html">Home</a> |
     <a href="svg_animation.html" class="active">SVG Practice</a>
@@ -62,7 +60,6 @@
 
 <h1>SVG Animation Practice</h1>
 
-<!-- === SVG-only Animation === -->
 <section>
     <h2>1️⃣ SVG Animate Element</h2>
     <svg width="200" height="200" viewBox="0 0 200 200">
@@ -73,7 +70,6 @@
     </svg>
 </section>
 
-<!-- === JavaScript "Avoid the Mouse" Animation === -->
 <section>
     <h2>2️⃣ Square Avoids the Mouse</h2>
     <svg id="avoidBox" width="300" height="300" viewBox="0 0 300 300">
@@ -89,14 +85,13 @@
     let svgRect = svg.getBoundingClientRect();
     let x = 125;
     let y = 125;
-    const step = 20; // how much the square moves
+    const step = 20;
 
     svg.addEventListener("mousemove", (e) => {
-        // get mouse position relative to SVG
         const mouseX = e.clientX - svgRect.left;
         const mouseY = e.clientY - svgRect.top;
 
-        const sqX = x + 25; // center of square
+        const sqX = x + 25;
         const sqY = y + 25;
 
         const dx = mouseX - sqX;
@@ -104,12 +99,10 @@
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < 80) {
-            // move away from mouse
             const angle = Math.atan2(dy, dx);
             x -= Math.cos(angle) * step;
             y -= Math.sin(angle) * step;
 
-            // keep inside SVG bounds
             x = Math.max(0, Math.min(x, 250));
             y = Math.max(0, Math.min(y, 250));
 
@@ -118,7 +111,6 @@
         }
     });
 
-    // handle window resizing so coordinates stay accurate
     window.addEventListener("resize", () => {
         svgRect = svg.getBoundingClientRect();
     });
